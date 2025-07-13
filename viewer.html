@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Viewer</title>
+</head>
+<body>
+  <h3>📺 مشاهده تصویر</h3>
+  <video id="remoteVideo" autoplay playsinline></video>
+
+  <script src="https://cdn.jsdelivr.net/npm/peerjs@1.4.7/dist/peerjs.min.js"></script>
+  <script>
+    const peer = new Peer({
+      host: "peerjs.com",
+      secure: true,
+      port: 443
+    });
+
+    peer.on("open", id => {
+      const call = peer.call("my-camera-id", null);
+      call.on("stream", stream => {
+        document.getElementById("remoteVideo").srcObject = stream;
+      });
+    });
+  </script>
+</body>
+</html>
