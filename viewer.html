@@ -10,9 +10,10 @@
   <script src="https://cdn.jsdelivr.net/npm/peerjs@1.4.7/dist/peerjs.min.js"></script>
   <script>
     const peer = new Peer({
-      host: "peerjs.com",
+      host: "peer-server-84v7.onrender.com",
       secure: true,
-      port: 443
+      port: 443,
+      path: "/"
     });
 
     peer.on("open", id => {
